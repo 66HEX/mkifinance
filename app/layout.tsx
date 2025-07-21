@@ -1,16 +1,39 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from 'next/font/local';
 import "./globals.css";
+import Navbar from "@/app/components/navbar";
+import Footer from "@/app/components/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const PPEditorialNew = localFont({
+  src: [
+    {
+      path: './assets/fonts/PPEditorialNew/PPEditorialNew-Variable.woff2',
+      style: 'normal',
+    },
+    {
+      path: './assets/fonts/PPEditorialNew/PPEditorialNew-ItalicVariable.woff2',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-pp-editorial-new',
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const PublicSans = localFont({
+  src: [
+    {
+      path: './assets/fonts/PublicSans/PublicSans[wght].woff2',
+      style: 'normal',
+    },
+    {
+      path: './assets/fonts/PublicSans/PublicSans-Italic[wght].woff2',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-public-sans',
+  display: 'swap',
 });
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,9 +48,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${PPEditorialNew.variable} ${PublicSans.variable} antialiased`}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
