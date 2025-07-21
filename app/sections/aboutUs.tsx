@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText";
+import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -71,7 +71,7 @@ export default function AboutUs() {
 					"-=2",
 				);
 
-				const paragraphSplits: any[] = [];
+				const paragraphSplits: SplitText[] = [];
 				paragraphsRef.current.forEach((el) => {
 					if (!el) return;
 

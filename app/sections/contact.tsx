@@ -1,26 +1,29 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, CircleNotchIcon } from "@phosphor-icons/react";
-import { z, ZodError } from "zod";
-
+import {
+	CircleNotchIcon,
+	ClockIcon,
+	EnvelopeIcon,
+	MapPinIcon,
+	PhoneIcon,
+} from "@phosphor-icons/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText";
+import { useEffect, useRef, useState } from "react";
+import { ZodError, z } from "zod";
 import { SVGBackground1 } from "@/app/components/svgBackground";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
-
 
 const contactFormSchema = z.object({
 	name: z.string().min(2, "Imię i nazwisko musi mieć co najmniej 2 znaki"),
 	email: z.string().email("Proszę wprowadzić poprawny adres email"),
 	subject: z.string().min(5, "Temat musi mieć co najmniej 5 znaków"),
 	message: z.string().min(10, "Wiadomość musi mieć co najmniej 10 znaków"),
-  });
-  
-  type ContactFormData = z.infer<typeof contactFormSchema>;
-  
+});
+
+type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
 	const [isLoading, setIsLoading] = useState(false);
@@ -30,81 +33,84 @@ export default function Contact() {
 		subject: "",
 		message: "",
 	});
-	const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
-
+	const [errors, setErrors] = useState<
+		Partial<Record<keyof ContactFormData, string>>
+	>({});
 
 	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-	  ) => {
+		e: React.ChangeEvent<
+			HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+		>,
+	) => {
 		const { id, value } = e.target;
-		setFormData(prev => ({ ...prev, [id]: value }));
+		setFormData((prev) => ({ ...prev, [id]: value }));
 		if (errors[id as keyof ContactFormData]) {
-		  setErrors(prev => ({ ...prev, [id]: undefined }));
+			setErrors((prev) => ({ ...prev, [id]: undefined }));
 		}
-	  };
-	
-	  const validateForm = () => {
-		try {
-		  contactFormSchema.parse(formData);
-		  setErrors({});
-		  return true;
-		} catch (error) {
-		  if (error instanceof ZodError) {
-			const newErrors: Partial<Record<keyof ContactFormData, string>> = {};
-			error.issues.forEach((err) => {
-			  if (err.path[0]) {
-				newErrors[err.path[0] as keyof ContactFormData] = err.message;
-			  }
-			});
-			setErrors(newErrors);
-		  }
-		  return false;
-		}
-	  };
-	
-	  const handleSubmit = async (e: React.FormEvent) => {
-		e.preventDefault();
-		
-		if (!validateForm()) {
-		  console.log("Please fix the form errors", {
-			description: "Some fields need your attention",
-		  });
-		  return;
-		}
-	
-		setIsLoading(true);
-	
-		try {
-		  const response = await fetch('/api/contact', {
-			method: 'POST',
-			headers: {
-			  'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(formData),
-		  });
-	
-		  const data = await response.json();
-	
-		  if (!response.ok) {
-			throw new Error(data.error || 'Failed to send message');
-		  }
+	};
 
-	
-		  setFormData({
-			name: "",
-			email: "",
-			subject: "",
-			message: ""
-		  });
-		  setErrors({});
+	const validateForm = () => {
+		try {
+			contactFormSchema.parse(formData);
+			setErrors({});
+			return true;
 		} catch (error) {
-		  console.log("Failed to send message", {
-			description: error instanceof Error ? error.message : "Please try again later",
-		  });
-		} finally {
-		  setIsLoading(false);
+			if (error instanceof ZodError) {
+				const newErrors: Partial<Record<keyof ContactFormData, string>> = {};
+				error.issues.forEach((err) => {
+					if (err.path[0]) {
+						newErrors[err.path[0] as keyof ContactFormData] = err.message;
+					}
+				});
+				setErrors(newErrors);
+			}
+			return false;
 		}
-	  };
+	};
+
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+
+		if (!validateForm()) {
+			console.log("Please fix the form errors", {
+				description: "Some fields need your attention",
+			});
+			return;
+		}
+
+		setIsLoading(true);
+
+		try {
+			const response = await fetch("/api/contact", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			});
+
+			const data = await response.json();
+
+			if (!response.ok) {
+				throw new Error(data.error || "Failed to send message");
+			}
+
+			setFormData({
+				name: "",
+				email: "",
+				subject: "",
+				message: "",
+			});
+			setErrors({});
+		} catch (error) {
+			console.log("Failed to send message", {
+				description:
+					error instanceof Error ? error.message : "Please try again later",
+			});
+		} finally {
+			setIsLoading(false);
+		}
+	};
 
 	const sectionRef = useRef(null);
 	const headingRef = useRef(null);
@@ -198,7 +204,6 @@ export default function Contact() {
 
 		initAnimation();
 	}, []);
-
 
 	const subjects = [
 		"Doradztwo inwestycyjne",
@@ -407,13 +412,13 @@ export default function Contact() {
 								className="w-full bg-header flex gap-3 items-center justify-center text-background font-sans font-medium py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300"
 							>
 								{isLoading ? (
-                  			<>
-								<CircleNotchIcon className="mr-2 h-4 w-4 animate-spin" />
-								Wysyłanie...
-								</>
-							) : (
-							'Wyślij wiadomość'
-							)}
+									<>
+										<CircleNotchIcon className="mr-2 h-4 w-4 animate-spin" />
+										Wysyłanie...
+									</>
+								) : (
+									"Wyślij wiadomość"
+								)}
 							</button>
 						</form>
 					</div>

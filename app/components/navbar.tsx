@@ -1,9 +1,9 @@
 "use client";
 
 import { List, X } from "@phosphor-icons/react";
-import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,7 +61,7 @@ export default function Navbar() {
 					opacity: 1,
 					duration: 0.5,
 					ease: "power2.out",
-				}
+				},
 			);
 			iconRef.current = "close";
 		} else {
@@ -85,8 +85,29 @@ export default function Navbar() {
 	const handleScrollTo = (id: string) => {
 		const target = document.getElementById(id);
 
-		if (target && (window as any).lenis) {
-			(window as any).lenis.scrollTo(target, {
+		if (
+			target &&
+			(
+				window as Window & {
+					lenis?: {
+						scrollTo: (
+							target: HTMLElement,
+							options: { offset: number; duration: number },
+						) => void;
+					};
+				}
+			).lenis
+		) {
+			(
+				window as Window & {
+					lenis?: {
+						scrollTo: (
+							target: HTMLElement,
+							options: { offset: number; duration: number },
+						) => void;
+					};
+				}
+			).lenis?.scrollTo(target, {
 				offset: -80,
 				duration: 1.2,
 			});
@@ -105,13 +126,22 @@ export default function Navbar() {
 				</div>
 
 				<ul className="hidden lg:flex gap-8 text-paragraph font-sans font-medium">
-					<li onClick={() => handleScrollTo("aboutus")} className="hover:text-header transition-colors cursor-pointer">
+					<li
+						onClick={() => handleScrollTo("aboutus")}
+						className="hover:text-header transition-colors cursor-pointer"
+					>
 						O nas
 					</li>
-					<li onClick={() => handleScrollTo("services")} className="hover:text-header transition-colors cursor-pointer">
+					<li
+						onClick={() => handleScrollTo("services")}
+						className="hover:text-header transition-colors cursor-pointer"
+					>
 						Oferta
 					</li>
-					<li onClick={() => handleScrollTo("contact")} className="hover:text-header transition-colors cursor-pointer">
+					<li
+						onClick={() => handleScrollTo("contact")}
+						className="hover:text-header transition-colors cursor-pointer"
+					>
 						Kontakt
 					</li>
 				</ul>
@@ -138,17 +168,29 @@ export default function Navbar() {
 				style={{ display: "none", height: 0, opacity: 0 }}
 			>
 				<ul className="flex flex-col gap-4 py-4 text-paragraph font-sans font-medium">
-					<li onClick={() => handleScrollTo("aboutus")} className="hover:text-header transition-colors cursor-pointer">
+					<li
+						onClick={() => handleScrollTo("aboutus")}
+						className="hover:text-header transition-colors cursor-pointer"
+					>
 						O nas
 					</li>
-					<li onClick={() => handleScrollTo("services")} className="hover:text-header transition-colors cursor-pointer">
+					<li
+						onClick={() => handleScrollTo("services")}
+						className="hover:text-header transition-colors cursor-pointer"
+					>
 						Oferta
 					</li>
-					<li onClick={() => handleScrollTo("contact")} className="hover:text-header transition-colors cursor-pointer">
+					<li
+						onClick={() => handleScrollTo("contact")}
+						className="hover:text-header transition-colors cursor-pointer"
+					>
 						Kontakt
 					</li>
 					<li>
-						<button onClick={() => handleScrollTo("contact")} className="mt-2 w-full border border-header text-header px-4 py-2 rounded-full hover:opacity-90 transition-opacity duration-300">
+						<button
+							onClick={() => handleScrollTo("contact")}
+							className="mt-2 w-full border border-header text-header px-4 py-2 rounded-full hover:opacity-90 transition-opacity duration-300"
+						>
 							+48 22 123 45 67
 						</button>
 					</li>

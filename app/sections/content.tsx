@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, Envelope, MapPin } from "@phosphor-icons/react";
+import { Envelope, MapPin, Phone } from "@phosphor-icons/react";
 
 export default function Content() {
 	const currentYear = new Date().getFullYear();
@@ -42,11 +42,18 @@ export default function Content() {
 	];
 
 	return (
-		<footer className="w-screen bg-background" role="contentinfo" aria-label="Stopka strony MKI Finance">
+		<footer
+			className="w-screen bg-background"
+			role="contentinfo"
+			aria-label="Stopka strony MKI Finance"
+		>
 			<div className="p-8 lg:p-16">
 				<div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 					<div className="lg:col-span-5">
-						<h3 className="text-header text-3xl lg:text-4xl font-serif mb-6 flex gap-2" aria-level={3}>
+						<h3
+							className="text-header text-3xl lg:text-4xl font-serif mb-6 flex gap-2"
+							aria-level={3}
+						>
 							MKI
 							<span className="italic text-header/80">Finance</span>
 						</h3>
@@ -62,7 +69,10 @@ export default function Content() {
 
 					<div className="lg:col-span-7 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
 						<nav aria-label="Nawigacja w stopce">
-							<h4 className="text-header text-xl font-serif mb-6" aria-level={4}>
+							<h4
+								className="text-header text-xl font-serif mb-6"
+								aria-level={4}
+							>
 								Nawigacja
 							</h4>
 							<ul className="space-y-3">
@@ -73,7 +83,10 @@ export default function Content() {
 											className="text-paragraph font-sans text-sm hover:text-header transition-colors duration-300 flex items-center gap-2 group"
 											aria-label={`Przejdź do sekcji ${link.name}`}
 										>
-											<div className="w-1 h-1 bg-paragraph rounded-full group-hover:bg-header transition-colors duration-300" aria-hidden="true"></div>
+											<div
+												className="w-1 h-1 bg-paragraph rounded-full group-hover:bg-header transition-colors duration-300"
+												aria-hidden="true"
+											></div>
 											{link.name}
 										</a>
 									</li>
@@ -93,7 +106,10 @@ export default function Content() {
 								{companyData.map((data, index) => (
 									<li key={index}>
 										<span className="text-paragraph font-sans text-sm flex items-center gap-2">
-											<div className="w-1 h-1 bg-paragraph rounded-full" aria-hidden="true"></div>
+											<div
+												className="w-1 h-1 bg-paragraph rounded-full"
+												aria-hidden="true"
+											></div>
 											{data}
 										</span>
 									</li>
@@ -113,7 +129,12 @@ export default function Content() {
 								{contactInfo.map((info, index) => {
 									const IconComponent = info.icon;
 									return (
-										<div key={index} className="flex items-start gap-3" role="group" aria-label={info.label}>
+										<div
+											key={index}
+											className="flex items-start gap-3"
+											role="group"
+											aria-label={info.label}
+										>
 											<div
 												className="flex items-center justify-center w-8 h-8 rounded-lg bg-background-secondary shadow-lg"
 												aria-hidden="true"
@@ -126,8 +147,12 @@ export default function Content() {
 												/>
 											</div>
 											<div>
-												<p className="text-header font-sans text-sm font-medium mb-1">{info.content}</p>
-												<p className="text-paragraph/80 font-sans text-xs">{info.subtitle}</p>
+												<p className="text-header font-sans text-sm font-medium mb-1">
+													{info.content}
+												</p>
+												<p className="text-paragraph/80 font-sans text-xs">
+													{info.subtitle}
+												</p>
 											</div>
 										</div>
 									);
@@ -137,7 +162,10 @@ export default function Content() {
 					</div>
 				</div>
 				<div className="mt-12 text-center">
-					<p className="text-header/60 font-sans text-sm" aria-label={`Prawa autorskie na rok ${currentYear}`}>
+					<p
+						className="text-header/60 font-sans text-sm"
+						aria-label={`Prawa autorskie na rok ${currentYear}`}
+					>
 						© {currentYear} MKI Finance. Wszystkie prawa zastrzeżone.
 					</p>
 				</div>

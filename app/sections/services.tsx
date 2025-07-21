@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { TrendUp, Briefcase, Bank, Calculator } from "@phosphor-icons/react";
+import { Bank, Briefcase, Calculator, TrendUp } from "@phosphor-icons/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText";
+import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -142,7 +142,6 @@ export default function Services() {
 			id="services"
 			ref={sectionRef}
 			className="w-screen bg-background grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 overflow-hidden"
-			role="region"
 			aria-labelledby="services-heading"
 		>
 			<div className="col-span-1 order-1 lg:order-1 flex flex-col justify-center gap-6 p-8 lg:p-16">
@@ -171,7 +170,6 @@ export default function Services() {
 				</p>
 
 				<ul
-					role="list"
 					aria-label="Lista oferowanych usług"
 					className="flex flex-col gap-6"
 				>
@@ -216,7 +214,10 @@ export default function Services() {
 						role="note"
 						aria-label="Dodatkowa informacja o doświadczeniu"
 					>
-						<div className="w-2 h-2 bg-header rounded-full" aria-hidden="true"></div>
+						<div
+							className="w-2 h-2 bg-header rounded-full"
+							aria-hidden="true"
+						></div>
 						<span className="text-paragraph font-sans text-sm lg:text-base">
 							Ponad 15 lat doświadczenia na rynku
 						</span>

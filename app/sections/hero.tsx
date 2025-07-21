@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
+import { useEffect, useRef } from "react";
 import { SVGBackground1 } from "@/app/components/svgBackground";
 
 gsap.registerPlugin(SplitText);
@@ -53,7 +53,9 @@ export default function Hero() {
 				"-=2",
 			);
 
-			const paragraphsplit = new SplitText(paragraphRef.current, { type: "lines" });
+			const paragraphsplit = new SplitText(paragraphRef.current, {
+				type: "lines",
+			});
 			tl.fromTo(
 				paragraphsplit.lines,
 				{ y: 50, opacity: 0 },
@@ -93,12 +95,14 @@ export default function Hero() {
 	return (
 		<section
 			id="home"
-			role="region"
 			aria-labelledby="hero-heading"
 			className="h-svh w-screen bg-background-secondary grid grid-cols-1 lg:grid-cols-2 overflow-hidden"
 		>
 			<div className="flex flex-col justify-center gap-6 p-8 lg:p-16 relative">
-				<div className="absolute inset-0 z-0 scale-250 top-100 lg:top-160" aria-hidden="true">
+				<div
+					className="absolute inset-0 z-0 scale-250 top-100 lg:top-160"
+					aria-hidden="true"
+				>
 					<SVGBackground1 color="rgba(0,0,0,0.1)" />
 				</div>
 				<h1
@@ -122,8 +126,9 @@ export default function Hero() {
 					aria-describedby="hero-description"
 					id="hero-description"
 				>
-					Stawiamy na długofalową współpracę, w której liczy się transparentność,
-					elastyczność oraz pełne dopasowanie do indywidualnych oczekiwań.
+					Stawiamy na długofalową współpracę, w której liczy się
+					transparentność, elastyczność oraz pełne dopasowanie do indywidualnych
+					oczekiwań.
 				</p>
 				<div
 					style={{ opacity: 0 }}
