@@ -8,7 +8,7 @@ export default function Content() {
 	const navigationLinks = [
 		{ name: "Strona główna", href: "#home" },
 		{ name: "O nas", href: "#aboutus" },
-		{ name: "Usługi", href: "#services" },
+		{ name: "Oferta", href: "#services" },
 		{ name: "Kontakt", href: "#contact" },
 	];
 
