@@ -6,8 +6,8 @@ export default function Content() {
 	const currentYear = new Date().getFullYear();
 
 	const navigationLinks = [
-		{ name: "Strona główna", href: "#hero" },
-		{ name: "O nas", href: "#about" },
+		{ name: "Strona główna", href: "#home" },
+		{ name: "O nas", href: "#aboutus" },
 		{ name: "Usługi", href: "#services" },
 		{ name: "Kontakt", href: "#contact" },
 	];
@@ -40,6 +40,38 @@ export default function Content() {
 			subtitle: "00-001 Warszawa",
 		},
 	];
+
+	const handleScrollTo = (id: string) => {
+		const target = document.getElementById(id);
+
+		if (
+			target &&
+			(
+				window as Window & {
+					lenis?: {
+						scrollTo: (
+							target: HTMLElement,
+							options: { offset: number; duration: number },
+						) => void;
+					};
+				}
+			).lenis
+		) {
+			(
+				window as Window & {
+					lenis?: {
+						scrollTo: (
+							target: HTMLElement,
+							options: { offset: number; duration: number },
+						) => void;
+					};
+				}
+			).lenis?.scrollTo(target, {
+				offset: -80,
+				duration: 1.2,
+			});
+		}
+	};
 
 	return (
 		<footer
@@ -80,7 +112,11 @@ export default function Content() {
 									<li key={index}>
 										<a
 											href={link.href}
-											className="text-paragraph font-sans text-sm hover:text-header transition-colors duration-300 flex items-center gap-2 group"
+											onClick={(e) => {
+												e.preventDefault();
+												handleScrollTo(link.href.replace("#", ""));
+											  }}
+																						className="text-paragraph font-sans text-sm hover:text-header transition-colors duration-300 flex items-center gap-2 group"
 											aria-label={`Przejdź do sekcji ${link.name}`}
 										>
 											<div

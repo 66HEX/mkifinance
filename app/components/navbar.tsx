@@ -188,7 +188,6 @@ export default function Navbar() {
 					</li>
 					<li>
 						<button
-							onClick={() => handleScrollTo("contact")}
 							className="mt-2 w-full border border-header text-header px-4 py-2 rounded-full hover:opacity-90 transition-opacity duration-300"
 						>
 							+48 22 123 45 67

@@ -109,7 +109,7 @@ export default function Hero() {
 					ref={headingRef}
 					id="hero-heading"
 					style={{ opacity: 0 }}
-					className="text-header text-4xl lg:text-6xl font-serif lg:leading-17"
+					className="text-header text-4xl lg:text-6xl font-serif lg:leading-17 mt-20 md:mt-0"
 					aria-level={1}
 					aria-label="Twój zaufany partner w zarządzaniu finansami"
 				>
