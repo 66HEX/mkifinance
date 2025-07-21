@@ -121,8 +121,8 @@ export default function Navbar() {
 			className="w-full fixed top-0 left-0 z-50 bg-background shadow-xl"
 		>
 			<nav className="px-6 lg:px-16 py-4 flex items-center justify-between">
-				<div className="text-header text-xl lg:text-2xl font-serif font-bold">
-					MKI Finance<span className="italic text-primary">.</span>
+				<div className="text-header text-xl lg:text-2xl font-serif ">
+					MKI<span className="ml-2 italic text-header/80">Finance</span>
 				</div>
 
 				<ul className="hidden lg:flex gap-8 text-paragraph font-sans font-medium">
