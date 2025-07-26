@@ -26,11 +26,11 @@ export default function Services() {
 
 	const services = [
 		{
-			id: "portfolio-management",
+			id: "mortgage-loan",
 			icon: TrendUp,
-			title: "Zarządzanie portfelem",
+			title: "Pożyczka pod hipotekę",
 			description:
-				"Profesjonalne zarządzanie aktywami z wykorzystaniem zaawansowanych strategii inwestycyjnych.",
+				"Rozwiązanie dedykowane przedsiębiorcom wymagającym większych sum finansowania.",
 		},
 		{
 			id: "private-banking",
@@ -210,24 +210,6 @@ export default function Services() {
 						);
 					})}
 				</ul>
-
-				<div className="pt-6 border-t">
-					<div
-						ref={addToServicesRef}
-						style={{ opacity: 0 }}
-						className="flex items-center gap-3"
-						role="note"
-						aria-label="Dodatkowa informacja o doświadczeniu"
-					>
-						<div
-							className="w-2 h-2 bg-header rounded-full"
-							aria-hidden="true"
-						></div>
-						<span className="text-paragraph font-sans text-sm lg:text-base">
-							Ponad 15 lat doświadczenia na rynku
-						</span>
-					</div>
-				</div>
 			</div>
 
 			<div

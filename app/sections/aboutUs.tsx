@@ -174,10 +174,10 @@ export default function AboutUs() {
 					style={{ opacity: 0 }}
 					className="text-paragraph text-base lg:text-xl font-sans mb-6"
 				>
-					Jesteśmy zespołem ekspertów finansowych z wieloletnim doświadczeniem w
-					branży bankowej i inwestycyjnej. Nasza firma powstała z pasji do
-					pomagania ludziom w osiąganiu stabilności finansowej i realizacji
-					marzeń.
+					Jesteśmy zespołem doświadczonych ekspertów finansowych, którzy łączą
+					pasję do finansów z głębokim zrozumieniem potrzeb naszych klientów.
+					Nasza misja to tworzenie trwałych relacji opartych na zaufaniu i
+					profesjonalizmie.
 				</p>
 
 				<div className="flex flex-col gap-6">
@@ -194,10 +194,10 @@ export default function AboutUs() {
 							style={{ opacity: 0 }}
 							className="text-paragraph font-sans text-sm lg:text-base"
 						>
-							Ponad 15 lat na rynku finansowym, obsłużyliśmy ponad 5000
-							klientów, realizując projekty o łącznej wartości przekraczającej
-							500 milionów złotych. Nasz zespół składa się z certyfikowanych
-							doradców finansowych, analityków i specjalistów ds. kredytów.
+							Działamy na rynku finansowym od wielu lat, budując solidną pozycję
+							opartą na zaufaniu klientów i skuteczności naszych rozwiązań. Nasz
+							zespół składa się z certyfikowanych doradców finansowych, analityków
+							i specjalistów, którzy nieustannie poszerzają swoją wiedzę.
 						</p>
 					</div>
 
@@ -232,7 +232,10 @@ export default function AboutUs() {
 						<div className="flex flex-col gap-2">
 							{[
 								{ id: "consultation", text: "Bezpłatne konsultacje i wyceny" },
-								{ id: "banks", text: "Współpraca z ponad 20 bankami" },
+								{ id: "investors", text: "Szerokie grono prywatnych inwestorów" },
+								{ id: "funds", text: "Wyłączna reprezentacja funduszy inwestycyjnych na rynku polskim" },
+								{ id: "banks", text: "Współpraca z największymi bankami w Polsce" },
+								{ id: "credits", text: "Kredyty dopasowane w 100% do Twoich potrzeb" },
 								{ id: "coverage", text: "Obsługa w całej Polsce" },
 								{ id: "guarantee", text: "Gwarancja najlepszych warunków" },
 							].map((item) => (

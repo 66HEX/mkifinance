@@ -12,35 +12,29 @@ export default function Content() {
 		{ id: "contact", name: "Kontakt", href: "#contact" },
 	];
 
-	const companyData = [
-		{ id: "company-name", text: "MKI Finance Sp. z o.o." },
-		{ id: "address", text: "ul. Finansowa 123, 00-001 Warszawa" },
-		{ id: "krs", text: "KRS: 0000123456" },
-		{ id: "regon", text: "REGON: 123456789" },
-		{ id: "nip", text: "NIP: 123-456-78-90" },
-	];
+
 
 	const contactInfo = [
 		{
 			id: "phone",
 			icon: Phone,
 			label: "Telefon",
-			content: "+48 22 123 45 67",
-			subtitle: "Pon-Pt 8:00-18:00",
+			content: "+48 793 788 388",
+			subtitle: "Dostępny codziennie",
 		},
 		{
 			id: "email",
 			icon: Envelope,
 			label: "Email",
-			content: "kontakt@finanse.pl",
+			content: "biuro@mki-finance.pl",
 			subtitle: "Odpowiedź w 24h",
 		},
 		{
 			id: "address",
 			icon: MapPin,
 			label: "Adres",
-			content: "ul. Finansowa 123",
-			subtitle: "00-001 Warszawa",
+			content: "Góra Przemysła 4",
+			subtitle: "Poznań",
 		},
 	];
 
@@ -77,9 +71,9 @@ export default function Content() {
 	};
 
 	return (
-		<footer className="w-screen bg-background">
-			<div className="p-8 lg:p-16">
-				<div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+			<footer className="w-screen bg-background">
+				<div className="p-6 lg:p-12">
+					<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 					<div className="lg:col-span-5">
 						<h3
 							className="text-header text-3xl lg:text-4xl font-serif mb-6 flex gap-2"
@@ -89,23 +83,23 @@ export default function Content() {
 							<span className="italic text-header/80">Finance</span>
 						</h3>
 						<p
-							className="text-paragraph font-sans text-base lg:text-lg leading-relaxed mb-8 max-w-md"
-							id="footer-description"
-						>
-							Twój zaufany partner w zarządzaniu finansami.
-							<br />
-							Transparentność, która buduje relacje.
-						</p>
+								className="text-paragraph font-sans text-base lg:text-lg leading-relaxed mb-6 max-w-md"
+								id="footer-description"
+							>
+								Twój zaufany partner w zarządzaniu finansami.
+								<br />
+								Transparentność, która buduje relacje.
+							</p>
 					</div>
 
-					<div className="lg:col-span-7 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+					<div className="lg:col-span-7 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
 						<nav aria-label="Nawigacja w stopce">
 							<h4
-								className="text-header text-xl font-serif mb-6"
-								aria-level={4}
-							>
-								Nawigacja
-							</h4>
+										className="text-header text-xl font-serif mb-4"
+										aria-level={4}
+									>
+										Nawigacja
+									</h4>
 							<ul className="space-y-3">
 								{navigationLinks.map((link) => (
 								<li key={link.id}>
@@ -129,37 +123,14 @@ export default function Content() {
 							</ul>
 						</nav>
 
-						<section aria-labelledby="company-data-title">
-							<h4
-								id="company-data-title"
-								className="text-header text-xl font-serif mb-6"
-								aria-level={4}
-							>
-								Dane firmy
-							</h4>
-							<ul className="space-y-3">
-								{companyData.map((data) => (
-							<li key={data.id}>
-								<span className="text-paragraph font-sans text-sm flex items-center gap-2">
-									<div
-										className="w-1 h-1 bg-paragraph rounded-full"
-										aria-hidden="true"
-									></div>
-									{data.text}
-								</span>
-							</li>
-						))}
-							</ul>
-						</section>
-
 						<section aria-labelledby="contact-info-title">
 							<h4
-								id="contact-info-title"
-								className="text-header text-xl font-serif mb-6"
-								aria-level={4}
-							>
-								Kontakt
-							</h4>
+									id="contact-info-title"
+									className="text-header text-xl font-serif mb-4"
+									aria-level={4}
+								>
+									Kontakt
+								</h4>
 							<div className="space-y-4">
 								{contactInfo.map((info) => {
 							const IconComponent = info.icon;
@@ -194,11 +165,11 @@ export default function Content() {
 						</section>
 					</div>
 				</div>
-				<div className="mt-12 text-center">
-					<p className="text-header/60 font-sans text-sm">
-						© {currentYear} MKI Finance. Wszystkie prawa zastrzeżone.
-					</p>
-				</div>
+					<div className="mt-8 text-center">
+						<p className="text-header/60 font-sans text-sm">
+							© {currentYear} MKI Finance. Wszystkie prawa zastrzeżone. • NIP: 6030034857
+						</p>
+					</div>
 			</div>
 		</footer>
 	);

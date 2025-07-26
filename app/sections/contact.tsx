@@ -2,7 +2,6 @@
 
 import {
 	CircleNotchIcon,
-	ClockIcon,
 	EnvelopeIcon,
 	MapPinIcon,
 	PhoneIcon,
@@ -219,29 +218,22 @@ export default function Contact() {
 			id: "phone",
 			icon: PhoneIcon,
 			title: "Telefon",
-			content: "+48 22 123 45 67",
-			subtitle: "Pon-Pt 8:00-18:00",
+			content: "+48 793 788 388",
+			subtitle: "Dostępny codziennie",
 		},
 		{
 			id: "email",
 			icon: EnvelopeIcon,
 			title: "Email",
-			content: "kontakt@finanse.pl",
+			content: "biuro@mki-finance.pl",
 			subtitle: "Odpowiedź w 24h",
 		},
 		{
 			id: "address",
 			icon: MapPinIcon,
 			title: "Adres",
-			content: "ul. Finansowa 123",
-			subtitle: "00-001 Warszawa",
-		},
-		{
-			id: "hours",
-			icon: ClockIcon,
-			title: "Godziny pracy",
-			content: "Pon-Pt 8:00-18:00",
-			subtitle: "Sob 9:00-14:00",
+			content: "Góra Przemysła 4",
+			subtitle: "Poznań",
 		},
 	];
 
@@ -313,7 +305,7 @@ export default function Contact() {
 							Bezpłatna konsultacja
 						</h3>
 						<p className="text-paragraph font-sans text-sm leading-relaxed">
-							Umów się na bezpłatną 30-minutową konsultację z naszym ekspertem
+							Umów się na bezpłatną konsultację z naszym ekspertem
 							finansowym.
 						</p>
 					</div>
