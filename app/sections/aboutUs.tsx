@@ -3,6 +3,7 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -10,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 export default function AboutUs() {
 	const sectionRef = useRef(null);
 	const imageWrapperRef = useRef(null);
-	const imageRef = useRef(null);
+	const imageRef = useRef<HTMLDivElement>(null);
 	const headingRef = useRef(null);
 	const paragraphsRef = useRef<(HTMLElement | null)[]>([]);
 	paragraphsRef.current = [];
@@ -149,12 +150,15 @@ export default function AboutUs() {
 				style={{ opacity: 0 }}
 				className="col-span-1 order-2 lg:order-1 overflow-hidden"
 			>
-				<img
-					ref={imageRef}
-					src={"/images/webp/about-image.webp"}
-					alt="O nas"
-					className="w-full h-full object-cover object-center"
-				/>
+				<div ref={imageRef} className="w-full h-full relative">
+					<Image
+						src="/images/webp/about-image.webp"
+						alt="O nas"
+						fill
+						className="object-cover object-center"
+						sizes="(max-width: 768px) 100vw, 50vw"
+					/>
+				</div>
 			</div>
 			<div className="order-1 lg:order-2 col-span-1 flex flex-col justify-start gap-6 p-8 lg:p-16">
 				<h2
@@ -227,20 +231,20 @@ export default function AboutUs() {
 						</h3>
 						<div className="flex flex-col gap-2">
 							{[
-								"Bezpłatne konsultacje i wyceny",
-								"Współpraca z ponad 20 bankami",
-								"Obsługa w całej Polsce",
-								"Gwarancja najlepszych warunków",
-							].map((item, i) => (
+								{ id: "consultation", text: "Bezpłatne konsultacje i wyceny" },
+								{ id: "banks", text: "Współpraca z ponad 20 bankami" },
+								{ id: "coverage", text: "Obsługa w całej Polsce" },
+								{ id: "guarantee", text: "Gwarancja najlepszych warunków" },
+							].map((item) => (
 								<div
-									key={i}
+									key={item.id}
 									ref={addToParagraphsRef}
 									style={{ opacity: 0 }}
 									className="flex items-center gap-3"
 								>
 									<div className="w-2 h-2 bg-header rounded-full"></div>
 									<span className="text-paragraph font-sans text-sm lg:text-base">
-										{item}
+										{item.text}
 									</span>
 								</div>
 							))}

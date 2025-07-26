@@ -4,6 +4,7 @@ import { Bank, Briefcase, Calculator, TrendUp } from "@phosphor-icons/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -11,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 export default function Services() {
 	const sectionRef = useRef<HTMLElement>(null);
 	const imageWrapperRef = useRef<HTMLDivElement>(null);
-	const imageRef = useRef<HTMLImageElement>(null);
+	const imageRef = useRef<HTMLDivElement>(null);
 	const headingRef = useRef<HTMLHeadingElement>(null);
 	const paragraphRef = useRef<HTMLParagraphElement>(null);
 	const servicesRef = useRef<(HTMLElement | null)[]>([]);
@@ -25,24 +26,28 @@ export default function Services() {
 
 	const services = [
 		{
+			id: "portfolio-management",
 			icon: TrendUp,
 			title: "Zarządzanie portfelem",
 			description:
 				"Profesjonalne zarządzanie aktywami z wykorzystaniem zaawansowanych strategii inwestycyjnych.",
 		},
 		{
+			id: "private-banking",
 			icon: Briefcase,
 			title: "Private Banking",
 			description:
 				"Ekskluzywne usługi finansowe dla klientów o wysokich wymaganiach.",
 		},
 		{
+			id: "corporate-finance",
 			icon: Bank,
 			title: "Finansowanie korporacyjne",
 			description:
 				"Zaawansowane rozwiązania finansowe dla przedsiębiorstw i instytucji.",
 		},
 		{
+			id: "financial-planning",
 			icon: Calculator,
 			title: "Planowanie finansowe",
 			description:
@@ -173,11 +178,11 @@ export default function Services() {
 					aria-label="Lista oferowanych usług"
 					className="flex flex-col gap-6"
 				>
-					{services.map((service, index) => {
+					{services.map((service) => {
 						const IconComponent = service.icon;
 						return (
 							<li
-								key={index}
+								key={service.id}
 								ref={addToServicesRef}
 								style={{ opacity: 0 }}
 								className="flex items-start gap-4"
@@ -232,12 +237,15 @@ export default function Services() {
 				role="img"
 				aria-label="Ilustracja przedstawiająca usługi finansowe"
 			>
-				<img
-					ref={imageRef}
-					src={"/images/webp/services-image.webp"}
-					alt="Ilustracja przedstawiająca usługi finansowe"
-					className="w-full h-full object-cover object-center"
-				/>
+				<div ref={imageRef} className="w-full h-full relative">
+					<Image
+						src="/images/webp/services-image.webp"
+						alt="Ilustracja przedstawiająca usługi finansowe"
+						fill
+						className="object-cover object-center"
+						sizes="(max-width: 768px) 100vw, 50vw"
+					/>
+				</div>
 			</div>
 		</section>
 	);

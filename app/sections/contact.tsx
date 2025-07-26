@@ -216,24 +216,28 @@ export default function Contact() {
 
 	const contactInfo = [
 		{
+			id: "phone",
 			icon: PhoneIcon,
 			title: "Telefon",
 			content: "+48 22 123 45 67",
 			subtitle: "Pon-Pt 8:00-18:00",
 		},
 		{
+			id: "email",
 			icon: EnvelopeIcon,
 			title: "Email",
 			content: "kontakt@finanse.pl",
 			subtitle: "Odpowiedź w 24h",
 		},
 		{
+			id: "address",
 			icon: MapPinIcon,
 			title: "Adres",
 			content: "ul. Finansowa 123",
 			subtitle: "00-001 Warszawa",
 		},
 		{
+			id: "hours",
 			icon: ClockIcon,
 			title: "Godziny pracy",
 			content: "Pon-Pt 8:00-18:00",
@@ -272,11 +276,11 @@ export default function Contact() {
 					</div>
 
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-						{contactInfo.map((info, index) => {
+						{contactInfo.map((info) => {
 							const IconComponent = info.icon;
 							return (
 								<div
-									key={index}
+									key={info.id}
 									ref={addToContactInfoRef}
 									style={{ opacity: 0 }}
 									className="flex items-start gap-4"
@@ -380,8 +384,8 @@ export default function Contact() {
 									className="w-full px-4 py-3 border border-paragraph/20 rounded-lg focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300 text-header font-sans"
 								>
 									<option value="">Wybierz temat</option>
-									{subjects.map((subject, index) => (
-										<option key={index} value={subject}>
+									{subjects.map((subject) => (
+										<option key={subject} value={subject}>
 											{subject}
 										</option>
 									))}

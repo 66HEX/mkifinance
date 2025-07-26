@@ -6,34 +6,37 @@ export default function Content() {
 	const currentYear = new Date().getFullYear();
 
 	const navigationLinks = [
-		{ name: "Strona główna", href: "#home" },
-		{ name: "O nas", href: "#aboutus" },
-		{ name: "Oferta", href: "#services" },
-		{ name: "Kontakt", href: "#contact" },
+		{ id: "home", name: "Strona główna", href: "#home" },
+		{ id: "aboutus", name: "O nas", href: "#aboutus" },
+		{ id: "services", name: "Oferta", href: "#services" },
+		{ id: "contact", name: "Kontakt", href: "#contact" },
 	];
 
 	const companyData = [
-		"MKI Finance Sp. z o.o.",
-		"ul. Finansowa 123, 00-001 Warszawa",
-		"KRS: 0000123456",
-		"REGON: 123456789",
-		"NIP: 123-456-78-90",
+		{ id: "company-name", text: "MKI Finance Sp. z o.o." },
+		{ id: "address", text: "ul. Finansowa 123, 00-001 Warszawa" },
+		{ id: "krs", text: "KRS: 0000123456" },
+		{ id: "regon", text: "REGON: 123456789" },
+		{ id: "nip", text: "NIP: 123-456-78-90" },
 	];
 
 	const contactInfo = [
 		{
+			id: "phone",
 			icon: Phone,
 			label: "Telefon",
 			content: "+48 22 123 45 67",
 			subtitle: "Pon-Pt 8:00-18:00",
 		},
 		{
+			id: "email",
 			icon: Envelope,
 			label: "Email",
 			content: "kontakt@finanse.pl",
 			subtitle: "Odpowiedź w 24h",
 		},
 		{
+			id: "address",
 			icon: MapPin,
 			label: "Adres",
 			content: "ul. Finansowa 123",
@@ -74,11 +77,7 @@ export default function Content() {
 	};
 
 	return (
-		<footer
-			className="w-screen bg-background"
-			role="contentinfo"
-			aria-label="Stopka strony MKI Finance"
-		>
+		<footer className="w-screen bg-background">
 			<div className="p-8 lg:p-16">
 				<div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 					<div className="lg:col-span-5">
@@ -108,15 +107,15 @@ export default function Content() {
 								Nawigacja
 							</h4>
 							<ul className="space-y-3">
-								{navigationLinks.map((link, index) => (
-									<li key={index}>
+								{navigationLinks.map((link) => (
+								<li key={link.id}>
 										<a
 											href={link.href}
 											onClick={(e) => {
 												e.preventDefault();
 												handleScrollTo(link.href.replace("#", ""));
-											  }}
-																						className="text-paragraph font-sans text-sm hover:text-header transition-colors duration-300 flex items-center gap-2 group"
+											}}
+											className="text-paragraph font-sans text-sm hover:text-header transition-colors duration-300 flex items-center gap-2 group"
 											aria-label={`Przejdź do sekcji ${link.name}`}
 										>
 											<div
@@ -139,17 +138,17 @@ export default function Content() {
 								Dane firmy
 							</h4>
 							<ul className="space-y-3">
-								{companyData.map((data, index) => (
-									<li key={index}>
-										<span className="text-paragraph font-sans text-sm flex items-center gap-2">
-											<div
-												className="w-1 h-1 bg-paragraph rounded-full"
-												aria-hidden="true"
-											></div>
-											{data}
-										</span>
-									</li>
-								))}
+								{companyData.map((data) => (
+							<li key={data.id}>
+								<span className="text-paragraph font-sans text-sm flex items-center gap-2">
+									<div
+										className="w-1 h-1 bg-paragraph rounded-full"
+										aria-hidden="true"
+									></div>
+									{data.text}
+								</span>
+							</li>
+						))}
 							</ul>
 						</section>
 
@@ -162,15 +161,13 @@ export default function Content() {
 								Kontakt
 							</h4>
 							<div className="space-y-4">
-								{contactInfo.map((info, index) => {
-									const IconComponent = info.icon;
-									return (
-										<div
-											key={index}
-											className="flex items-start gap-3"
-											role="group"
-											aria-label={info.label}
-										>
+								{contactInfo.map((info) => {
+							const IconComponent = info.icon;
+							return (
+								<div
+									key={info.id}
+									className="flex items-start gap-3"
+								>
 											<div
 												className="flex items-center justify-center w-8 h-8 rounded-lg bg-background-secondary shadow-lg"
 												aria-hidden="true"
@@ -198,10 +195,7 @@ export default function Content() {
 					</div>
 				</div>
 				<div className="mt-12 text-center">
-					<p
-						className="text-header/60 font-sans text-sm"
-						aria-label={`Prawa autorskie na rok ${currentYear}`}
-					>
+					<p className="text-header/60 font-sans text-sm">
 						© {currentYear} MKI Finance. Wszystkie prawa zastrzeżone.
 					</p>
 				</div>

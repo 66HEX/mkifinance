@@ -2,6 +2,7 @@
 
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { SVGBackground1 } from "@/app/components/svgBackground";
 
@@ -9,7 +10,7 @@ gsap.registerPlugin(SplitText);
 
 export default function Hero() {
 	const imageWrapperRef = useRef(null);
-	const imageRef = useRef(null);
+	const imageRef = useRef<HTMLDivElement>(null);
 	const headingRef = useRef(null);
 	const paragraphRef = useRef(null);
 	const buttonsRef = useRef<HTMLDivElement>(null);
@@ -134,10 +135,9 @@ export default function Hero() {
 					style={{ opacity: 0 }}
 					ref={buttonsRef}
 					className="flex flex-col sm:flex-row gap-4"
-					role="group"
-					aria-label="Przyciski nawigacyjne sekcji głównej"
 				>
 					<button
+						type="button"
 						onClick={() => handleScrollTo("contact")}
 						className="bg-header text-background font-sans font-medium px-4 py-2 rounded-sm hover:bg-header/90 transition-colors duration-300 text-sm lg:text-lg cursor-pointer"
 						aria-label="Przejdź do formularza kontaktowego"
@@ -145,6 +145,7 @@ export default function Hero() {
 						Złóż wniosek
 					</button>
 					<button
+						type="button"
 						onClick={() => handleScrollTo("aboutus")}
 						className="border-2 border-header text-header font-sans font-medium px-4 py-2 rounded-sm hover:bg-header transition-colors duration-300 hover:text-background text-sm lg:text-lg cursor-pointer"
 						aria-label="Dowiedz się więcej o nas"
@@ -158,15 +159,16 @@ export default function Hero() {
 				style={{ opacity: 0 }}
 				ref={imageWrapperRef}
 				className="col-span-1 h-full overflow-hidden"
-				role="img"
-				aria-label="Zadowolony klient korzystający z usług finansowych"
 			>
-				<img
-					ref={imageRef}
-					src={"/images/webp/hero-image.webp"}
-					alt="Zadowolony klient korzystający z usług finansowych"
-					className="w-full h-full object-cover object-center"
-				/>
+				<div ref={imageRef} className="w-full h-full relative">
+					<Image
+						src="/images/webp/hero-image.webp"
+						alt="Zadowolony klient korzystający z usług finansowych"
+						fill
+						className="object-cover object-center"
+						sizes="(max-width: 768px) 100vw, 50vw"
+					/>
+				</div>
 			</div>
 		</section>
 	);

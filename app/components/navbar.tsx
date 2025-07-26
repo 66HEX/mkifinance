@@ -125,34 +125,41 @@ export default function Navbar() {
 					MKI<span className="ml-2 italic text-header/80">Finance</span>
 				</div>
 
-				<ul className="hidden lg:flex gap-8 text-paragraph font-sans font-medium">
-					<li
+				<div className="hidden lg:flex gap-8 text-paragraph font-sans font-medium">
+					<button
+						type="button"
 						onClick={() => handleScrollTo("aboutus")}
-						className="hover:text-header transition-colors cursor-pointer"
+						className="hover:text-header transition-colors cursor-pointer focus:outline-none focus:ring-0 focus:ring-header rounded bg-transparent border-none p-0"
 					>
 						O nas
-					</li>
-					<li
+					</button>
+					<button
+						type="button"
 						onClick={() => handleScrollTo("services")}
-						className="hover:text-header transition-colors cursor-pointer"
+						className="hover:text-header transition-colors cursor-pointer focus:outline-none focus:ring-0 focus:ring-header rounded bg-transparent border-none p-0"
 					>
 						Oferta
-					</li>
-					<li
+					</button>
+					<button
+						type="button"
 						onClick={() => handleScrollTo("contact")}
-						className="hover:text-header transition-colors cursor-pointer"
+						className="hover:text-header transition-colors cursor-pointer focus:outline-none focus:ring-0 focus:ring-header rounded bg-transparent border-none p-0"
 					>
 						Kontakt
-					</li>
-				</ul>
+					</button>
+				</div>
 
 				<div className="hidden lg:block">
-					<button className="text-header border border-header font-sans font-medium px-6 py-2 rounded-full hover:opacity-90 transition-opacity duration-300">
+					<button
+						type="button"
+						className="text-header border border-header font-sans font-medium px-6 py-2 rounded-full hover:opacity-90 transition-opacity duration-300"
+					>
 						+48 22 123 45 67
 					</button>
 				</div>
 
 				<button
+					type="button"
 					className="lg:hidden text-header"
 					onClick={toggleMobileMenu}
 					aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"}
@@ -167,33 +174,35 @@ export default function Navbar() {
 				className="lg:hidden bg-background overflow-hidden px-6"
 				style={{ display: "none", height: 0, opacity: 0 }}
 			>
-				<ul className="flex flex-col gap-4 py-4 text-paragraph font-sans font-medium">
-					<li
+				<div className="flex flex-col gap-4 py-4 text-paragraph font-sans font-medium">
+					<button
+						type="button"
 						onClick={() => handleScrollTo("aboutus")}
-						className="hover:text-header transition-colors cursor-pointer"
+						className="text-left hover:text-header transition-colors cursor-pointer focus:outline-none focus:ring-0 focus:ring-header rounded bg-transparent border-none p-0"
 					>
 						O nas
-					</li>
-					<li
+					</button>
+					<button
+						type="button"
 						onClick={() => handleScrollTo("services")}
-						className="hover:text-header transition-colors cursor-pointer"
+						className="text-left hover:text-header transition-colors cursor-pointer focus:outline-none focus:ring-0 focus:ring-header rounded bg-transparent border-none p-0"
 					>
 						Oferta
-					</li>
-					<li
+					</button>
+					<button
+						type="button"
 						onClick={() => handleScrollTo("contact")}
-						className="hover:text-header transition-colors cursor-pointer"
+						className="text-left hover:text-header transition-colors cursor-pointer focus:outline-none focus:ring-0 focus:ring-header rounded bg-transparent border-none p-0"
 					>
 						Kontakt
-					</li>
-					<li>
-						<button
-							className="mt-2 w-full border border-header text-header px-4 py-2 rounded-full hover:opacity-90 transition-opacity duration-300"
-						>
-							+48 22 123 45 67
-						</button>
-					</li>
-				</ul>
+					</button>
+					<button
+						type="button"
+						className="mt-2 w-full border border-header text-header px-4 py-2 rounded-full hover:opacity-90 transition-opacity duration-300"
+					>
+						+48 22 123 45 67
+					</button>
+				</div>
 			</div>
 		</header>
 	);
