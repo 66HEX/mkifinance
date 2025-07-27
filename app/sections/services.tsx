@@ -33,11 +33,11 @@ export default function Services() {
 				"Rozwiązanie dedykowane przedsiębiorcom wymagającym większych sum finansowania.",
 		},
 		{
-			id: "private-banking",
+			id: "developer-finance",
 			icon: Briefcase,
-			title: "Private Banking",
+			title: "Finansowanie deweloperskie",
 			description:
-				"Ekskluzywne usługi finansowe dla klientów o wysokich wymaganiach.",
+				"Specjalistyczne rozwiązania finansowe dla projektów deweloperskich i inwestycji w nieruchomości.",
 		},
 		{
 			id: "corporate-finance",

@@ -154,7 +154,7 @@ export default function Navbar() {
 						type="button"
 						className="text-header border border-header font-sans font-medium px-6 py-2 rounded-full hover:opacity-90 transition-opacity duration-300"
 					>
-						+48 22 123 45 67
+						+48 793 788 388
 					</button>
 				</div>
 
@@ -200,7 +200,7 @@ export default function Navbar() {
 						type="button"
 						className="mt-2 w-full border border-header text-header px-4 py-2 rounded-full hover:opacity-90 transition-opacity duration-300"
 					>
-						+48 22 123 45 67
+						+48 793 788 388
 					</button>
 				</div>
 			</div>

@@ -207,7 +207,7 @@ export default function Contact() {
 	const subjects = [
 		"Doradztwo inwestycyjne",
 		"Zarządzanie portfelem",
-		"Private Banking",
+		"Finansowanie deweloperskie",
 		"Finansowanie korporacyjne",
 		"Planowanie finansowe",
 		"Inne",
