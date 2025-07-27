@@ -233,7 +233,7 @@ export default function AboutUs() {
 							{[
 								{ id: "consultation", text: "Bezpłatne konsultacje i wyceny" },
 								{ id: "investors", text: "Szerokie grono prywatnych inwestorów" },
-								{ id: "funds", text: "Wyłączna reprezentacja funduszy inwestycyjnych na rynku polskim" },
+								{ id: "funds", text: "Wyłączna reprezentacja 2 funduszy inwestycyjnych na rynku polskim" },
 								{ id: "banks", text: "Współpraca z największymi bankami w Polsce" },
 								{ id: "credits", text: "Kredyty dopasowane w 100% do Twoich potrzeb" },
 								{ id: "coverage", text: "Obsługa w całej Polsce" },

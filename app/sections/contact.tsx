@@ -205,8 +205,7 @@ export default function Contact() {
 	}, []);
 
 	const subjects = [
-		"Doradztwo inwestycyjne",
-		"Zarządzanie portfelem",
+		"Pożyczka pod hipotekę",
 		"Finansowanie deweloperskie",
 		"Finansowanie korporacyjne",
 		"Planowanie finansowe",
