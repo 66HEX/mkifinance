@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/app/components/footer";
 import Navbar from "@/app/components/navbar";
+import { Toaster } from "sonner";
 
 const PPEditorialNew = localFont({
 	src: [
@@ -159,6 +160,7 @@ export default function RootLayout({
 				<Navbar />
 				{children}
 				<Footer />
+				<Toaster position="top-right" richColors />
 			</body>
 		</html>
 	);

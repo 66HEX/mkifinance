@@ -11,6 +11,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText";
 import { useEffect, useRef, useState } from "react";
 import { ZodError, z } from "zod";
+import { toast } from "sonner";
 import { SVGBackground1 } from "@/app/components/svgBackground";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -18,8 +19,8 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 const contactFormSchema = z.object({
 	name: z.string().min(2, "Imię i nazwisko musi mieć co najmniej 2 znaki"),
 	email: z.string().email("Proszę wprowadzić poprawny adres email"),
-	subject: z.string().min(5, "Temat musi mieć co najmniej 5 znaków"),
-	message: z.string().min(10, "Wiadomość musi mieć co najmniej 10 znaków"),
+	subject: z.string().min(2, "Temat musi mieć co najmniej 2 znaki"),
+	message: z.string().min(8, "Wiadomość musi mieć co najmniej 8 znaków"),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -71,8 +72,8 @@ export default function Contact() {
 		e.preventDefault();
 
 		if (!validateForm()) {
-			console.log("Please fix the form errors", {
-				description: "Some fields need your attention",
+			toast.error("Proszę poprawić błędy w formularzu", {
+				description: "Niektóre pola wymagają uwagi",
 			});
 			return;
 		}
@@ -101,10 +102,13 @@ export default function Contact() {
 				message: "",
 			});
 			setErrors({});
+			toast.success("Wiadomość została wysłana!", {
+				description: "Odpowiemy na Twoją wiadomość w ciągu 24 godzin.",
+			});
 		} catch (error) {
-			console.log("Failed to send message", {
+			toast.error("Nie udało się wysłać wiadomości", {
 				description:
-					error instanceof Error ? error.message : "Please try again later",
+					error instanceof Error ? error.message : "Spróbuj ponownie później",
 			});
 		} finally {
 			setIsLoading(false);
@@ -329,15 +333,22 @@ export default function Contact() {
 									Imię i nazwisko *
 								</label>
 								<input
-									type="text"
-									id="name"
-									name="name"
-									value={formData.name}
-									onChange={handleChange}
-									required
-									className="w-full px-4 py-3 border border-paragraph/20 rounded-lg focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300 text-header font-sans"
-									placeholder="Jan Kowalski"
-								/>
+								type="text"
+								id="name"
+								name="name"
+								value={formData.name}
+								onChange={handleChange}
+								required
+								className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 text-header font-sans ${
+									errors.name
+										? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+										: "border-paragraph/20 focus:border-accent focus:ring-accent/20"
+								}`}
+								placeholder="Jan Kowalski"
+							/>
+							{errors.name && (
+								<p className="text-red-500 text-sm mt-1">{errors.name}</p>
+							)}
 							</div>
 
 							<div>
@@ -348,15 +359,22 @@ export default function Contact() {
 									Email *
 								</label>
 								<input
-									type="email"
-									id="email"
-									name="email"
-									value={formData.email}
-									onChange={handleChange}
-									required
-									className="w-full px-4 py-3 border border-paragraph/20 rounded-lg focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300 text-header font-sans"
-									placeholder="jan.kowalski@email.com"
-								/>
+								type="email"
+								id="email"
+								name="email"
+								value={formData.email}
+								onChange={handleChange}
+								required
+								className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 text-header font-sans ${
+									errors.email
+										? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+										: "border-paragraph/20 focus:border-accent focus:ring-accent/20"
+								}`}
+								placeholder="jan.kowalski@email.com"
+							/>
+							{errors.email && (
+								<p className="text-red-500 text-sm mt-1">{errors.email}</p>
+							)}
 							</div>
 
 							<div>
@@ -367,20 +385,27 @@ export default function Contact() {
 									Temat *
 								</label>
 								<select
-									id="subject"
-									name="subject"
-									value={formData.subject}
-									onChange={handleChange}
-									required
-									className="w-full px-4 py-3 border border-paragraph/20 rounded-lg focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300 text-header font-sans"
-								>
-									<option value="">Wybierz temat</option>
-									{subjects.map((subject) => (
-										<option key={subject} value={subject}>
-											{subject}
-										</option>
-									))}
-								</select>
+								id="subject"
+								name="subject"
+								value={formData.subject}
+								onChange={handleChange}
+								required
+								className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 text-header font-sans ${
+									errors.subject
+										? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+										: "border-paragraph/20 focus:border-accent focus:ring-accent/20"
+								}`}
+							>
+								<option value="">Wybierz temat</option>
+								{subjects.map((subject) => (
+									<option key={subject} value={subject}>
+										{subject}
+									</option>
+								))}
+							</select>
+							{errors.subject && (
+								<p className="text-red-500 text-sm mt-1">{errors.subject}</p>
+							)}
 							</div>
 
 							<div>
@@ -391,15 +416,22 @@ export default function Contact() {
 									Wiadomość *
 								</label>
 								<textarea
-									id="message"
-									name="message"
-									value={formData.message}
-									onChange={handleChange}
-									required
-									rows={4}
-									className="w-full px-4 py-3 border border-paragraph/20 rounded-lg focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300 text-header font-sans resize-none"
-									placeholder="Opisz swoje potrzeby finansowe..."
-								/>
+								id="message"
+								name="message"
+								value={formData.message}
+								onChange={handleChange}
+								required
+								rows={4}
+								className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 text-header font-sans resize-none ${
+									errors.message
+										? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+										: "border-paragraph/20 focus:border-accent focus:ring-accent/20"
+								}`}
+								placeholder="Opisz swoje potrzeby finansowe..."
+							/>
+							{errors.message && (
+								<p className="text-red-500 text-sm mt-1">{errors.message}</p>
+							)}
 							</div>
 
 							<button
